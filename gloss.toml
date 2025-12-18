@@ -1,0 +1,26 @@
+# Gloss Configuration File
+
+# Global default settings
+field_naming_strategy = "snake_case"
+absent_field_mode = "error_if_absent"
+
+[output]
+directory = "gen"
+file_suffix = "_json"
+
+# Module-specific configuration
+[modules.example]
+field_naming_strategy = "camel_case"
+
+# Configure the User type in the example module
+[modules.example.types.User]
+generate_encoder = true
+generate_decoder = true
+type_tag = "type"
+
+# Field-level configuration for User type
+[modules.example.types.User.fields.email]
+maybe_absent = true
+
+[modules.example.types.User.fields.created_at]
+rename = "createdAt"
